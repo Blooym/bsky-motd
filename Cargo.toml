@@ -1,0 +1,17 @@
+[package]
+name = "bsky-motd"
+authors = ["Blooym"]
+description = "Get a message of the day in your terminal from a specified Bluesky list."
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow = "1.0.93"
+bsky-sdk = "0.1.12"
+clap = { version = "4.5.21", features = ["derive", "env"] }
+dirs = "5.0.1"
+ipld-core = "0.4.1"
+rand = "0.8.5"
+tokio = { version = "1.41.1", features = ["macros", "rt"] }
+url = "2.5.3"
