@@ -13,7 +13,7 @@ use rand::{seq::SliceRandom, thread_rng};
 use std::{fs::create_dir_all, ops::Deref, path::PathBuf};
 use url::Url;
 
-const PROJECT_NAME: &str = "bsky-cli-motd";
+const PROJECT_NAME: &str = "bsky-motd";
 const AGENT_CONFIG_FILENAME: &str = "agentconfig.json";
 
 #[derive(Debug, Clone, Parser)]
