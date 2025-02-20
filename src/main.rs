@@ -1,15 +1,15 @@
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use bsky_sdk::{
+    BskyAgent,
     agent::config::{Config, FileStore},
     api::{
         app::bsky::feed::{defs::FeedViewPostData, get_list_feed},
         types::{LimitedNonZeroU8, Object},
     },
-    BskyAgent,
 };
 use clap::Parser;
 use ipld_core::ipld::Ipld;
-use rand::{seq::SliceRandom, thread_rng};
+use rand::seq::IndexedRandom;
 use std::{fs::create_dir_all, ops::Deref, path::PathBuf};
 use url::Url;
 
@@ -57,7 +57,7 @@ async fn main() -> Result<()> {
         .filter(|f| f.reply.is_none() && f.post.embed.is_none())
         .collect::<Vec<Object<FeedViewPostData>>>();
     let post = filtered_posts
-        .choose(&mut thread_rng())
+        .choose(&mut rand::rng())
         .context("filtered posts returned an empty value")?;
 
     match &post.post.record {
